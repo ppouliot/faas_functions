@@ -1,0 +1,11 @@
+provider:
+  name: faas
+  gateway: http://172.20.230.78:8080
+functions:
+  ipmitool:
+    lang: dockerfile
+    handler: ./ipmitool
+    image: ppouliot/faas_ipmitool:latest
+    environment:
+        read_timeout: 60s
+        write_timeout: 60s
