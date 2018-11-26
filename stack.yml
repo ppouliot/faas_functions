@@ -1,0 +1,41 @@
+provider:
+  name: faas
+  gateway: http://172.20.230.78:8080
+functions:
+  ipmitool:
+    lang: dockerfile
+    handler: ./ipmitool
+    image: ppouliot/faas_ipmitool:latest
+    environment:
+        read_timeout: 60s
+        write_timeout: 60s
+  ipmi_one_time_pxe:
+    lang: dockerfile
+    handler: ./ipmi_one_time_pxe
+    image: ppouliot/faas_ipmi_one_time_pxe:latest
+    environment:
+        LANPLUS: $LANPLUS
+        IPMI_IPADDR: $IPMI_IPADDR
+        IPMI_USER: $IPMI_USER
+        IPMI_PASSWD: $IPMI_PASSWD
+        read_timeout: 60s
+        write_timeout: 60s
+  list_container_image_tags_from_organization:
+    lang: dockerfile
+    handler: ./list_container_image_tags_from_organization
+    image: ppouliot/list_container_image_tags_from_organization:latest
+    environment:
+        DOCKER_HUB_ORGANIZATION: library
+        CONTAINER_IMAGE: debian
+        read_timeout: 60s
+        write_timeout: 60s
+  list_containers_from_organization:
+    lang: dockerfile
+    handler: ./list_containers_from_organization
+    image: ppouliot/list_containers_from_organization:latest
+    environment:
+        DOCKER_HUB_ORGANIZATION: library
+        read_timeout: 60s
+        write_timeout: 60s
+
+
