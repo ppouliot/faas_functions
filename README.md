@@ -1,6 +1,6 @@
 # OpenFAAS Functions
 
-This is a bunch of serverless OpenFAAS Function.
+This is a bunch of serverless OpenFAAS Functions.
 
 * [ipmitool](docs/ipmitool.md)
 * ipmi_one_time_pxe
