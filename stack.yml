@@ -4,14 +4,14 @@ provider:
 functions:
   ipmitool:
     lang: dockerfile
-    handler: ./ipmitool
+    handler: ./infrastructure/ipmitool
     image: ppouliot/faas_ipmitool:latest
     environment:
         read_timeout: 60s
         write_timeout: 60s
   ipmi_one_time_pxe:
     lang: dockerfile
-    handler: ./ipmi_one_time_pxe
+    handler: ./infrastructure/ipmi_one_time_pxe
     image: ppouliot/faas_ipmi_one_time_pxe:latest
     environment:
         LANPLUS: $LANPLUS
@@ -22,7 +22,7 @@ functions:
         write_timeout: 60s
   list_container_image_tags_from_organization:
     lang: dockerfile
-    handler: ./list_container_image_tags_from_organization
+    handler: ./dockerhub/list_container_image_tags_from_organization
     image: ppouliot/list_container_image_tags_from_organization:latest
     environment:
         DOCKER_HUB_ORGANIZATION: library
@@ -31,11 +31,9 @@ functions:
         write_timeout: 60s
   list_containers_from_organization:
     lang: dockerfile
-    handler: ./list_containers_from_organization
+    handler: ./dockerhub/list_containers_from_organization
     image: ppouliot/list_containers_from_organization:latest
     environment:
         DOCKER_HUB_ORGANIZATION: library
         read_timeout: 60s
         write_timeout: 60s
-
-
